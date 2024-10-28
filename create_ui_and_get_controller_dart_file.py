@@ -26,10 +26,17 @@ def create_files(folder_path, name):
 
     # Create and open the 'update_request_get_controller.dart' file
     with open(controller_file_path, 'w') as controller_file:
-        controller_file.write('// Dart code for GetX controller goes here\n')
+        controller_file.write(f'class {getCamelCase(name)}GetController extends GetxController {{}}\n')
 
     print(f"Files '{ui_file_name}' and '{controller_file_name}' were created successfully.")
 
+def getCamelCase(name):
+    words = name.split("_")
+    camelCaseWords = []
+    for word in words:
+        camelCaseWords.append(word.capitalize())
+    camelCaseName = ''.join(camelCaseWords)
+    return camelCaseName
 
 def main():
     folder_address = input("Enter the folder address: ").strip()
