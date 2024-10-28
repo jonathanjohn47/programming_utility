@@ -22,13 +22,21 @@ def create_files(folder_path, name):
 
     # Create and open the 'update_request_screen.dart' file
     with open(ui_file_path, 'w') as ui_file:
-        ui_file.write('// Dart code for UI screen goes here\n')
+        ui_file.write(f'''class {getCamelCase(name)}Screen extends StatelessWidget {{
+  const {getCamelCase(name)}Screen({{super.key}});
+
+  @override
+  Widget build(BuildContext context) {{
+    return Scaffold();
+  }}
+}}''')
 
     # Create and open the 'update_request_get_controller.dart' file
     with open(controller_file_path, 'w') as controller_file:
         controller_file.write(f'class {getCamelCase(name)}GetController extends GetxController {{}}\n')
 
     print(f"Files '{ui_file_name}' and '{controller_file_name}' were created successfully.")
+
 
 def getCamelCase(name):
     words = name.split("_")
@@ -37,6 +45,7 @@ def getCamelCase(name):
         camelCaseWords.append(word.capitalize())
     camelCaseName = ''.join(camelCaseWords)
     return camelCaseName
+
 
 def main():
     folder_address = input("Enter the folder address: ").strip()
