@@ -22,7 +22,7 @@ def create_files(folder_path, name):
 
     # Create and open the 'update_request_screen.dart' file
     with open(ui_file_path, 'w') as ui_file:
-        ui_file.write(f'''class {getCamelCase(name)}Screen extends StatelessWidget {{
+        ui_file.write(f'''import 'package:flutter/material.dart';\nclass {getCamelCase(name)}Screen extends StatelessWidget {{
   const {getCamelCase(name)}Screen({{super.key}});
 
   @override
@@ -33,7 +33,8 @@ def create_files(folder_path, name):
 
     # Create and open the 'update_request_get_controller.dart' file
     with open(controller_file_path, 'w') as controller_file:
-        controller_file.write(f'class {getCamelCase(name)}GetController extends GetxController {{}}\n')
+        controller_file.write(
+            f'''import 'package:get/get.dart';\nclass {getCamelCase(name)}GetController extends GetxController {{}}\n''')
 
     print(f"Files '{ui_file_name}' and '{controller_file_name}' were created successfully.")
 
