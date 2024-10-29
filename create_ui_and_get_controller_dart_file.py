@@ -22,14 +22,14 @@ def create_files(folder_path, name, initiateGetController: bool):
 
     # Create and open the 'update_request_screen.dart' file
     with open(ui_file_path, 'w') as ui_file:
-        ui_file.write(f'''import 'package:flutter/material.dart';
+        ui_file.write(f'''import 'package:get/get.dart';\nimport 'package:flutter/material.dart';
 class {getCamelCase(name)}Screen extends StatelessWidget {{
   const {getCamelCase(name)}Screen({{super.key}});
   ''')
 
     with open(ui_file_path, 'a') as ui_file:
         if initiateGetController:
-            ui_file.write(f'final controller = Get.put({getCamelCase(name)}GetController());\n')
+            ui_file.write(f'final {getCamelCase(name)}GetController getController = Get.put({getCamelCase(name)}GetController());\n')
 
     with open(ui_file_path, 'a') as ui_file:
         ui_file.write(f'''@override
