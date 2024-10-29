@@ -29,7 +29,8 @@ class {getCamelCase(name)}Screen extends StatelessWidget {{
 
     with open(ui_file_path, 'a') as ui_file:
         if initiateGetController:
-            ui_file.write(f'final {getCamelCase(name)}GetController getController = Get.put({getCamelCase(name)}GetController());\n')
+            ui_file.write(
+                f'final {getCamelCase(name)}GetController getController = Get.put({getCamelCase(name)}GetController());\n')
 
     with open(ui_file_path, 'a') as ui_file:
         ui_file.write(f'''@override
