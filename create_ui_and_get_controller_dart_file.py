@@ -1,7 +1,7 @@
 import os
 
 
-def create_files(folder_path, name):
+def create_files(folder_path, name, initiateGetController: bool):
     # Paths for the 'ui' and 'get_controllers' directories
     ui_folder_path = os.path.join(folder_path, 'ui')
     get_controllers_folder_path = os.path.join(folder_path, 'get_controllers')
@@ -22,14 +22,21 @@ def create_files(folder_path, name):
 
     # Create and open the 'update_request_screen.dart' file
     with open(ui_file_path, 'w') as ui_file:
-        ui_file.write(f'''import 'package:flutter/material.dart';\nclass {getCamelCase(name)}Screen extends StatelessWidget {{
+        ui_file.write(f'''import 'package:flutter/material.dart';
+class {getCamelCase(name)}Screen extends StatelessWidget {{
   const {getCamelCase(name)}Screen({{super.key}});
+  ''')
 
-  @override
-  Widget build(BuildContext context) {{
-    return Scaffold();
-  }}
-}}''')
+    with open(ui_file_path, 'a') as ui_file:
+        if initiateGetController:
+            ui_file.write(f'final controller = Get.put({getCamelCase(name)}GetController());\n')
+
+    with open(ui_file_path, 'a') as ui_file:
+        ui_file.write(f'''@override
+          Widget build(BuildContext context) {{
+            return Scaffold();
+          }}
+        }}''')
 
     # Create and open the 'update_request_get_controller.dart' file
     with open(controller_file_path, 'w') as controller_file:
@@ -51,7 +58,8 @@ def getCamelCase(name):
 def main():
     folder_address = input("Enter the folder address: ").strip()
     name = input("Enter the name: ").strip()
-    create_files(folder_address, name)
+    initiate_get_controller = input("Do you want to initiate GetxController? (y/n): ")
+    create_files(folder_address, name, initiate_get_controller == 'y')
 
 
 if __name__ == "__main__":
