@@ -1,6 +1,6 @@
 import os
 
-
+import pyperclip
 def rename_file(new_name):
     # Hardcoded file path
     file_path = '/Users/jonathanjohn/StudioProjects/sme_user/assets/images/img.png'
