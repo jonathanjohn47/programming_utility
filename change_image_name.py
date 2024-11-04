@@ -19,6 +19,7 @@ def rename_file(new_name):
         # Rename the file
         os.rename(file_path, new_file_path)
         print(f'Renamed: img.png -> {new_name}')
+        pyperclip.copy('assets/images/' + new_name)
     except Exception as e:
         print(f"An error occurred: {e}")
 
