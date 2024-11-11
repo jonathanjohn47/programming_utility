@@ -1,5 +1,7 @@
 import os
 
+import pyperclip
+
 
 def create_files(folder_path, name, initiateGetController: bool):
     # Paths for the 'ui' and 'get_controllers' directories
@@ -63,6 +65,8 @@ def main():
     name =  input("Enter the name: ").strip()
     initiate_get_controller = input("Do you want to initiate GetxController? (y/n): ")
     create_files(folder_address, name, initiate_get_controller == 'y')
+
+    pyperclip.copy(f"Get.to(() => {getCamelCase(name)}Screen());")
 
 
 if __name__ == "__main__":
