@@ -1,4 +1,6 @@
 import os
+import shutil
+
 
 def delete_empty_folders(folder_path):
     """Deletes all empty folders inside the given folder."""
@@ -9,6 +11,14 @@ def delete_empty_folders(folder_path):
                 os.rmdir(dir_path)
                 print(f"Deleted empty folder: {dir_path}")
 
+def delete_non_git_folders(folder_path):
+    for dir_name in os.listdir(folder_path):
+        dir_path = os.path.join(folder_path, dir_name)
+        if os.path.isdir(dir_path):
+            git_folder_path = os.path.join(dir_path, '.git')
+            if not os.path.exists(git_folder_path):
+                shutil.rmtree(dir_path)
+                print(f"Deleted non-git folder: {dir_path}")
 if __name__ == "__main__":
     folder_address = input("Enter the folder address: ").strip()
-    delete_empty_folders(folder_address)
+    delete_non_git_folders(folder_address)
