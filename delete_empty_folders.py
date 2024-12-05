@@ -32,5 +32,5 @@ def delete_files_with_given_text_in_its_name(folder_path, text):
 
 if __name__ == "__main__":
     folder_address = input("Enter the folder address: ").strip()
-    text_to_include = input("Enter the text to include in the files: ").strip()
-    delete_files_with_given_text_in_its_name(folder_address, text_to_include)
+    #text_to_include = input("Enter the text to include in the files: ").strip()
+    delete_empty_folders(folder_address)
