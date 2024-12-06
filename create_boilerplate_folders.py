@@ -1,5 +1,5 @@
 import os
-folders_to_create = ['features', 'utility', 'core', 'models']
+folders_to_create = ['features', 'utility', 'components', 'models']
 def create_boilerplate_folders(folder_path):
     for folder in folders_to_create:
         os.makedirs(os.path.join(folder_path, folder), exist_ok=True)

@@ -5,7 +5,7 @@ print("Enter your text (press Enter twice to finish):")
 input_lines = []
 while True:
     line = input()
-    if line == "":
+    if line == "\\":
         break
     input_lines.append(line)
 input_text = "\n".join(input_lines)
