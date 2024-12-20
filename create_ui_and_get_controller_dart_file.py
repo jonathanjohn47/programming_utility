@@ -38,9 +38,27 @@ class {getCamelCase(name)}Screen extends StatelessWidget {{
     with open(ui_file_path, 'a') as ui_file:
         ui_file.write(f'''@override
           Widget build(BuildContext context) {{
-            return Scaffold();
+            return Scaffold(
+            body: OrientationBuilder(
+        builder: (context, orientation) {{
+          if (orientation == Orientation.portrait) {{
+            return mobileUi();
+          }} else {{
+            return webUi();
           }}
-        }}''')
+        }},
+      ),);
+          }}
+        }}
+        
+        Widget mobileUi() {{
+    return Container();
+  }}
+  
+  Widget webUi() {{
+    return Container();
+  }}
+''')
 
     # Create and open the 'update_request_get_controller.dart' file
     with open(controller_file_path, 'w') as controller_file:
