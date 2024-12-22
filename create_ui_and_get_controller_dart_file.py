@@ -49,7 +49,7 @@ class {getCamelCase(name)}Screen extends StatelessWidget {{
         }},
       ),);
           }}
-        }}
+     
         
         Widget mobileUi() {{
     return Container();
@@ -58,6 +58,7 @@ class {getCamelCase(name)}Screen extends StatelessWidget {{
   Widget webUi() {{
     return Container();
   }}
+     }}
 ''')
 
     # Create and open the 'update_request_get_controller.dart' file
@@ -79,8 +80,8 @@ def getCamelCase(name):
 
 def main():
     folder_address = input("Enter the folder address: ").strip()
-    #name = folder_address.split('/')[-1]
-    name =  input("Enter the name: ").strip()
+    # name = folder_address.split('/')[-1]
+    name = input("Enter the name: ").strip()
     initiate_get_controller = input("Do you want to initiate GetxController? (y/n): ")
     create_files(folder_address, name, initiate_get_controller == 'y')
 
