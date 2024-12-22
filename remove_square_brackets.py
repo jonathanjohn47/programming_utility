@@ -5,12 +5,13 @@ print("Enter your text (press Enter twice to finish):")
 input_lines = []
 while True:
     line = input()
-    if line == "\\":
+    if line == "DONE":
         break
     input_lines.append(line)
 input_text = "\n".join(input_lines)
 # remove all the contents of square brackets
 output_text = re.sub(r'\[.*?\]', '', input_text)
+output_text = re.sub(r' \.', '.', output_text)
 
 pyperclip.copy(output_text)
 
