@@ -92,16 +92,9 @@ def getCamelCase(name):
 
 
 if __name__ == "__main__":
-    file_paths = ["/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/file_data_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/forgot_password_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/forum_reply_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/join_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/meeting_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/search_forum.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/splash_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/sub_category_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/verification_screen.dart",
-                  "/Users/jonathanjohn/StudioProjects/academy_app/lib/screens/vimeo_iframe.dart"
-                  ]
+    file_paths = [
+        "/Users/jonathanjohn/StudioProjects/matrimonial_flutter_app/lib/screens/blog/blogs.dart"
+
+        ]
     for dart_file_path in file_paths:
         create_get_controller(dart_file_path)
