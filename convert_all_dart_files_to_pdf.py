@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
     dart_file_paths = []
     for line in dart_file_paths_input_lines:
-        cleaned_line = line.strip()
+        cleaned_line = line.strip().rstrip(',')  # Remove trailing commas
         if cleaned_line.startswith('"') and cleaned_line.endswith('"'):
             dart_file_paths.append(cleaned_line[1:-1])
         elif cleaned_line.startswith("'") and cleaned_line.endswith("'"):
