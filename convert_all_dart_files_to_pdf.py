@@ -59,10 +59,27 @@ def main(dart_file_paths, output_path):
             print(f"Skipping invalid Dart file path: '{dart_file_path}'")
 
 if __name__ == "__main__":
-    dart_file_paths_input = input("Enter the absolute paths of the Dart files to convert, separated by commas: ")
+    print("Enter the absolute paths of the Dart files to convert, one per line.")
+    print("You can enclose paths in double quotes.")
+    print("Press Enter twice to finish.")
+    dart_file_paths_input_lines = []
+    while True:
+        line = input()
+        if not line:
+            break
+        dart_file_paths_input_lines.append(line)
+
     pdf_output_directory = input("Enter the absolute path to the folder where you want to save the PDFs: ")
 
-    dart_file_paths = [path.strip() for path in dart_file_paths_input.split(',')]
+    dart_file_paths = []
+    for line in dart_file_paths_input_lines:
+        cleaned_line = line.strip()
+        if cleaned_line.startswith('"') and cleaned_line.endswith('"'):
+            dart_file_paths.append(cleaned_line[1:-1])
+        elif cleaned_line.startswith("'") and cleaned_line.endswith("'"):
+            dart_file_paths.append(cleaned_line[1:-1])
+        elif cleaned_line:  # If it's not empty after stripping
+            dart_file_paths.append(cleaned_line)
 
     if not os.path.isdir(pdf_output_directory):
         print(f"Error: '{pdf_output_directory}' is not a valid directory.")
