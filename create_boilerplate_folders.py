@@ -2,6 +2,10 @@ import os
 import re
 
 folders_to_create = ['features', 'utility', 'components', 'models']
+imports_to_add = [
+    "import 'package:flutter_screenutil/flutter_screenutil.dart';",
+    "import 'package:get/get.dart';"
+]
 
 
 def create_boilerplate_folders(folder_path):
@@ -20,6 +24,11 @@ def modify_main_dart(lib_path):
     try:
         with open(main_dart_path, 'r') as file:
             content = file.read()
+
+        # Add missing imports
+        for import_statement in imports_to_add:
+            if import_statement not in content:
+                content = import_statement + '\n' + content
 
         # Replace MaterialApp with GetMaterialApp
         content = content.replace('MaterialApp(', 'GetMaterialApp(')
@@ -43,9 +52,9 @@ def modify_main_dart(lib_path):
                 if index < len(content):
 
                     modified_content = content[
-                                       :start_index] + 'ScreenUtilInit(\n            builder: (context, child) {\n                return ' + content[
-                                                                                                                                             start_index:index + 1] + '\n          },\n        );' + content[
-                                                                                                                                                                                             index + 1:]
+                                       :start_index] + 'ScreenUtilInit(\n            designSize: const Size(375, 812),\n            minTextAdapt: true,\n            splitScreenMode: true,\n            builder: (context, child) {\n                return ' + content[
+                                                                                                                                                                                                                                                                 start_index:index + 1] + '\n          },\n        )' + content[
+                                                                                                                                                                                                                                                                                                                        index + 1:]
                     content = modified_content
                 else:
                     print("Could not wrap GetMaterialApp with ScreenUtilInit, something went wrong")
