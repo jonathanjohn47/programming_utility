@@ -52,9 +52,9 @@ def modify_main_dart(lib_path):
                 if index < len(content):
 
                     modified_content = content[
-                                       :start_index] + 'ScreenUtilInit(\n            designSize: const Size(375, 812),\n            minTextAdapt: true,\n            splitScreenMode: true,\n            builder: (context, child) {\n                return ' + content[
-                                                                                                                                                                                                                                                                 start_index:index + 1] + '\n          },\n        )' + content[
-                                                                                                                                                                                                                                                                                                                        index + 1:]
+                                       :start_index] + 'ScreenUtilInit(\n        builder: (context, child) {\n                return ' + content[
+                                                                                                                                         start_index:index + 1] + '\n          },\n        );' + content[
+                                                                                                                                                                                                index + 1:]
                     content = modified_content
                 else:
                     print("Could not wrap GetMaterialApp with ScreenUtilInit, something went wrong")
