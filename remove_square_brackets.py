@@ -12,6 +12,8 @@ input_text = "\n".join(input_lines)
 # remove all the contents of square brackets
 output_text = re.sub(r'\[.*?\]', '', input_text)
 output_text = re.sub(r' \.', '.', output_text)
+output_text = re.sub(r'([A-Za-z].?)+\d\.', '$1.', output_text)
+output_text = re.sub(r'\•', '', output_text)
 
 pyperclip.copy(output_text)
 

@@ -93,7 +93,7 @@ def getCamelCase(name):
 
 if __name__ == "__main__":
     file_paths = [
-        "/Users/jonathanjohn/StudioProjects/matrimonial_flutter_app/lib/screens/blog/blogs.dart"
+        "/Users/jonathanjohn/StudioProjects/providers_practice/lib/other_screen.dart"
 
         ]
     for dart_file_path in file_paths:
