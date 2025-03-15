@@ -50,7 +50,7 @@ def main(lib_directory_path, output_path):
 
     for root, _, files in os.walk(lib_directory_path):
         for file in files:
-            if file.endswith('.dart'):
+            if file.endswith('.dart') or file.endswith('.php'):
                 dart_file_path = os.path.join(root, file)
                 try:
                     with open(dart_file_path, 'r', encoding='utf-8') as f:
@@ -62,7 +62,8 @@ def main(lib_directory_path, output_path):
                     print(f"Error reading '{dart_file_path}': {e}")
 
     if dart_files_found:
-        pdf_file_path = os.path.join(output_path, "combined_dart_files.pdf")
+        pdf_file_name = input("Enter the name of the PDF file (without extension): ")
+        pdf_file_path = os.path.join(output_path, f"{pdf_file_name}.pdf")
         create_pdf_from_content(combined_dart_code, pdf_file_path)
     else:
         print(f"No Dart files found in '{lib_directory_path}' or its subdirectories.")
