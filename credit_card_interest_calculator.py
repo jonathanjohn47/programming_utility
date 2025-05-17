@@ -3,10 +3,12 @@ rate_of_interest = float(input("Enter the rate of interest: "))
 
 monthly_expense = float(input("Enter the monthly payment: "))
 
-number_of_months = int(input("Enter the number of months you want to keep the payment: "))
+#number_of_months = int(input("Enter the number of months you want to keep the payment: "))
 
 total_interest = 0
-for i in range(number_of_months):
+
+months = ["May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
+for month in months:
     balance_due = balance_due - monthly_expense + total_interest
     interest_on_balance = balance_due * rate_of_interest / 100
     balance_after_expense_made = balance_due + monthly_expense
@@ -17,7 +19,7 @@ for i in range(number_of_months):
 
     print("\n")
     print("Total interest this month: " + str(total_interest))
-    print("Balance carried over to next month: " + str(balance_due))
+    print("Balance carried over to " + month + ": "  + str(balance_due))
 
 print("\n")
 print("Final balance after paying off the monthly expense: " + str(balance_due - monthly_expense))
