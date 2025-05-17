@@ -1,26 +1,24 @@
-balance_due = float(input("Enter the balance due: "))
-rate_of_interest = float(input("Enter the rate of interest: "))
+balance_due = float(input("Enter your starting balance (e.g. 21000): "))
+rate_of_interest = float(input("Enter monthly interest rate (%) (e.g. 3.75): "))
+monthly_payment = float(input("Enter how much you pay (and spend again) each month (e.g. 13000): "))
 
-monthly_expense = float(input("Enter the monthly payment: "))
-
-#number_of_months = int(input("Enter the number of months you want to keep the payment: "))
-
+months = ["June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 total_interest = 0
 
-months = ["May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 for month in months:
-    balance_due = balance_due - monthly_expense + total_interest
-    interest_on_balance = balance_due * rate_of_interest / 100
-    balance_after_expense_made = balance_due + monthly_expense
-    interest_on_balance_after_expense = balance_after_expense_made * rate_of_interest / 100
-    interest_on_expense = monthly_expense * rate_of_interest / 100
-    total_interest = interest_on_balance + interest_on_balance_after_expense + interest_on_expense
-    balance_due = balance_after_expense_made
+    # 1. Interest applies to balance (including past interest)
+    interest = balance_due * (rate_of_interest / 100)
+    balance_due += interest  # Interest gets added to balance
+    total_interest += interest
 
-    print("\n")
-    print("Total interest this month: " + str(total_interest))
-    print("Balance carried over to " + month + ": "  + str(balance_due))
+    # 2. Pay 13,000
+    balance_due -= monthly_payment
 
-print("\n")
-print("Final balance after paying off the monthly expense: " + str(balance_due - monthly_expense))
-print("Total interest incurred: " + str(total_interest))
+    # 3. Spend 13,000 again
+    balance_due += monthly_payment
+
+    # At the end of the cycle balance is previous balance + all previous interest!
+    print(f"{month}: interest charged: {interest:.2f}, total owed now: {balance_due:.2f}")
+
+print(f"\nTotal interest paid by December: ₹{total_interest:.2f}")
+print(f"Balance still remaining in December: ₹{balance_due:.2f}")
