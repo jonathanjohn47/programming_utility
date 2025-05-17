@@ -15,4 +15,10 @@ for i in range(number_of_months):
     total_interest = interest_on_balance + interest_on_balance_after_expense + interest_on_expense
     balance_due = balance_after_expense_made
 
+    print("\n")
+    print("Total interest this month: " + str(total_interest))
+    print("Balance carried over to next month: " + str(balance_due))
+
+print("\n")
+print("Final balance after paying off the monthly expense: " + str(balance_due - monthly_expense))
 print("Total interest incurred: " + str(total_interest))
